@@ -124,7 +124,7 @@ function mousePressed(){
 }
 
 function runCall(){
-  window.location = 'tel:4126564693';
+  window.location = 'tel:4125858125';
   noLoop();
 }
 
@@ -256,8 +256,8 @@ function draw() {
     pop();
   }
 
-  // if(startCountdown && !stopCountdown && (millis() - cdTime) >= 5000){
-  //   // console.log("hi");
-  // runCall();
-  // }
+  if(startCountdown && !stopCountdown && (millis() - cdTime) >= 5000){
+    // console.log("hi");
+    runCall();
+  }
 }
