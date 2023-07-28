@@ -17,8 +17,8 @@ class Stat{
     this.x = x;
     this.y = y;
     this.name = name;
-    this.w = 100;
-    this.h = 900;
+    this.w = 100/1991*width;
+    this.h = 900/1122*height;
     this.low = low;
     this.high = high;
     this.current = current;
@@ -26,7 +26,7 @@ class Stat{
     this.lowest = int(this.low/this.intv)*this.intv - this.intv;
     this.highest = int(this.high/this.intv)*this.intv + this.intv;
     this.nmarks = (this.highest - this.lowest)/this.intv;
-    this.pixDiff = (this.y + this.h/2 - 60 - (this.y - this.h/2 + 60))/this.nmarks;
+    this.pixDiff = (this.y + this.h/2 - 60/1122*height - (this.y - this.h/2 + 60/1122*height))/this.nmarks;
     this.bad = 0;
   }
 
@@ -41,21 +41,21 @@ class Stat{
     push();
     stroke('#FFFFFF');
     strokeWeight(5);
-    line(this.x, this.y - this.h/2 + 40, this.x, this.y + this.h/2 - 40);
+    line(this.x, this.y - this.h/2 + 40/1122*height, this.x, this.y + this.h/2 - 40/1122*height);
     pop();
     
     for(let i = 0; i <= this.nmarks; i++){
       push();
       stroke('#FFFFFF');
       strokeWeight(5);
-      line(this.x - 20, this.y - this.h/2 + 60 + i*this.pixDiff, this.x + 20, this.y - this.h/2 + 60 + i*this.pixDiff);
+      line(this.x - 20/1991*height, this.y - this.h/2 + 60/1122*height + i*this.pixDiff, this.x + 20/1991*height, this.y - this.h/2 + 60/1122*height + i*this.pixDiff);
       pop();
 
       push();
       fill(255,255,255);
       textAlign(LEFT, CENTER);
       textSize(20);
-      text(this.highest - i*this.intv, this.x + this.w/2 + 15, this.y - this.h/2 + 60 + i*this.pixDiff);
+      text(this.highest - i*this.intv, this.x + this.w/2 + 15/1991*width, this.y - this.h/2 + 60/1122*height + i*this.pixDiff);
       pop();
     }
     
@@ -63,19 +63,19 @@ class Stat{
     fill(255,255,255);
     textAlign(CENTER, TOP);
     textSize(30);
-    text(this.name, this.x, this.y + this.h/2 + 25);
+    text(this.name, this.x, this.y + this.h/2 + 25/1122*height);
     pop();
 
     push();
     stroke('#008AD8');
     strokeWeight(5);
-    line(this.x - 35, this.y + this.h/2 - 60 - (this.low - this.lowest)/this.intv*this.pixDiff, this.x + 35, this.y + this.h/2 - 60 - (this.low - this.lowest)/this.intv*this.pixDiff);
+    line(this.x - 35/1991*width, this.y + this.h/2 - 60/1122*height - (this.low - this.lowest)/this.intv*this.pixDiff, this.x + 35/1991*width, this.y + this.h/2 - 60/1122*height - (this.low - this.lowest)/this.intv*this.pixDiff);
     pop();
 
     push();
     stroke('#008AD8');
     strokeWeight(5);
-    line(this.x - 35, this.y + this.h/2 - 60 - (this.high - this.lowest)/this.intv*this.pixDiff, this.x + 35, this.y + this.h/2 - 60 - (this.high - this.lowest)/this.intv*this.pixDiff);
+    line(this.x - 35/1991*width, this.y + this.h/2 - 60/1122*height - (this.high - this.lowest)/this.intv*this.pixDiff, this.x + 35/1991*width, this.y + this.h/2 - 60/1122*height - (this.high - this.lowest)/this.intv*this.pixDiff);
     pop();
 
     push();
@@ -92,18 +92,18 @@ class Stat{
       this.bad = 1;
     }
     strokeWeight(5);
-    line(this.x - 35, this.y + this.h/2 - 60 - (this.current - this.lowest)/this.intv*this.pixDiff, this.x + 35, this.y + this.h/2 - 60 - (this.current - this.lowest)/this.intv*this.pixDiff);
+    line(this.x - 35/1991*width, this.y + this.h/2 - 60/1122*height - (this.current - this.lowest)/this.intv*this.pixDiff, this.x + 35/1991*width, this.y + this.h/2 - 60/1122*height - (this.current - this.lowest)/this.intv*this.pixDiff);
     pop();
   }
 }
 
 let width = 1991;
 let height = 1122;
-let statList = [new Stat(width/2 - 800, height/2, 150000, 400000, 256723, 30000, "Platelet Count\n(in cells per mm^3)"),
-                new Stat(width/2 - 400, height/2, 4500, 11000, 7235, 750, "White Blood Cell Count\n(in cells per mm^3)"),
+let statList = [new Stat(width/2 - 800/1991*width, height/2, 150000, 400000, 256723, 30000, "Platelet Count\n(in cells per mm^3)"),
+                new Stat(width/2 - 400/1991*width, height/2, 4500, 11000, 7235, 750, "White Blood Cell Count\n(in cells per mm^3)"),
                 new Stat(width/2, height/2, 4.3, 5.9, 4.8, 0.25, "Red Blood Cell Count\n(in millions of cells per mm^3)"),
-                new Stat(width/2 + 400, height/2, 54, 126, 82, 15, "Blood Sugar Levels\n(in mg/dL)"),
-                new Stat(width/2 + 800, height/2, 125, 200, 156, 10, "Cholesterol\n(in mg/dL)")];
+                new Stat(width/2 + 400/1991*width, height/2, 54, 126, 82, 15, "Blood Sugar Levels\n(in mg/dL)"),
+                new Stat(width/2 + 800/1991*width, height/2, 125, 200, 156, 10, "Cholesterol\n(in mg/dL)")];
 let currEdit = 0;
 let startCountdown = false;
 let stopCountdown = false;
@@ -117,14 +117,14 @@ function mousePressed(){
     }
   }
 
-  if(width/2 - 700 < mouseX && mouseX < width/2 + 700 && height/2 - 400 < mouseY && mouseY < height/2 + 400 && startCountdown){
+  if(width/2 - 700/1991*width < mouseX && mouseX < width/2 + 700/1991*width && height/2 - 400/1122*height < mouseY && mouseY < height/2 + 400/1122*height && startCountdown){
     startCountdown = false;
     stopCountdown = true;
   }
 }
 
 function runCall(){
-  window.location = 'tel:4125858125';
+  window.location = 'tel:4126564693';
   noLoop();
 }
 
@@ -136,10 +136,10 @@ function draw() {
   }
 
   if (keyIsDown(UP_ARROW)){
-    statList[currEdit].current += 5 * statList[currEdit].intv / statList[currEdit].pixDiff;
+    statList[currEdit].current += 1 * statList[currEdit].intv / statList[currEdit].pixDiff;
   }
   else if(keyIsDown(DOWN_ARROW)){
-    statList[currEdit].current -= 5 * statList[currEdit].intv / statList[currEdit].pixDiff;
+    statList[currEdit].current -= 1 * statList[currEdit].intv / statList[currEdit].pixDiff;
   }
   
   let t = "All Levels Normal";
@@ -202,7 +202,7 @@ function draw() {
   textAlign(LEFT, CENTER);
   textSize(30);
   fill(255,255,255);
-  text("Overall Health: ", 55, 55);
+  text("Overall Health: ", 55/1991*width, 55/1122*height);
   pop();
 
   push();
@@ -223,7 +223,7 @@ function draw() {
 
   push();
   fill(255,255,255);
-  triangle(width - 60, height/2 - 50, width - 60, height/2 + 50, width - 10, height/2);
+  triangle(width - 60/1991*width, height/2 - 50/1122*height, width - 60/1991*width, height/2 + 50/1122*height, width - 10/1991*width, height/2);
   pop();
 
   for(let i = 0; i < danger.length; i++){
@@ -237,7 +237,7 @@ function draw() {
     push();
     fill(255, 0, 0);
     noStroke();
-    rect(width/2 - 700, height/2 - 400, 1400, 800, 25, 25, 25, 25);
+    rect(width/2 - 700/1991*width, height/2 - 400/1122*height, 1400/1991*width, 800/1122*height, 25/1991*width, 25/1991*width, 25/1991*width, 25/1991*width);
     pop();
 
     let t = 5 - int((millis() - cdTime) / 1000);
@@ -246,18 +246,18 @@ function draw() {
     textAlign(CENTER, CENTER);
     textSize(60);
     fill(255,255,255);
-    text("PRESS BUTTON IF STILL RESPONSIVE", width/2, height/2 - 70);
+    text("PRESS BUTTON IF STILL RESPONSIVE", width/2, height/2 - 70/1122*height);
     if(t > 0){
-      text(t, width/2, height/2 + 70);
+      text(t, width/2, height/2 + 70/1122*height);
     }
     else{
-      text("Calling 911...", width/2, height/2 + 70);
+      text("Calling 911...", width/2, height/2 + 70/1122*height);
     }
     pop();
   }
 
-  if(startCountdown && !stopCountdown && (millis() - cdTime) >= 5000){
-    // console.log("hi");
-    runCall();
-  }
+  // if(startCountdown && !stopCountdown && (millis() - cdTime) >= 5000){
+  //   // console.log("hi");
+  // runCall();
+  // }
 }
