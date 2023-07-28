@@ -1,4 +1,6 @@
 new p5();
+let width = 1470;
+let height = 734;
 
 function setup() {
   width = windowWidth;
@@ -54,7 +56,7 @@ class Stat{
       push();
       fill(255,255,255);
       textAlign(LEFT, CENTER);
-      textSize(20);
+      textSize(15);
       text(this.highest - i*this.intv, this.x + this.w/2 + 15/1991*width, this.y - this.h/2 + 60/1122*height + i*this.pixDiff);
       pop();
     }
@@ -62,7 +64,7 @@ class Stat{
     push();
     fill(255,255,255);
     textAlign(CENTER, TOP);
-    textSize(30);
+    textSize(20);
     text(this.name, this.x, this.y + this.h/2 + 25/1122*height);
     pop();
 
@@ -97,8 +99,7 @@ class Stat{
   }
 }
 
-let width = 1991;
-let height = 1122;
+
 let statList = [new Stat(width/2 - 800/1991*width, height/2, 150000, 400000, 256723, 30000, "Platelet Count\n(in cells per mm^3)"),
                 new Stat(width/2 - 400/1991*width, height/2, 4500, 11000, 7235, 750, "White Blood Cell Count\n(in cells per mm^3)"),
                 new Stat(width/2, height/2, 4.3, 5.9, 4.8, 0.25, "Red Blood Cell Count\n(in millions of cells per mm^3)"),
@@ -136,10 +137,10 @@ function draw() {
   }
 
   if (keyIsDown(UP_ARROW)){
-    statList[currEdit].current += 1 * statList[currEdit].intv / statList[currEdit].pixDiff;
+    statList[currEdit].current += 5 * statList[currEdit].intv / statList[currEdit].pixDiff;
   }
   else if(keyIsDown(DOWN_ARROW)){
-    statList[currEdit].current -= 1 * statList[currEdit].intv / statList[currEdit].pixDiff;
+    statList[currEdit].current -= 5 * statList[currEdit].intv / statList[currEdit].pixDiff;
   }
   
   let t = "All Levels Normal";
@@ -244,7 +245,7 @@ function draw() {
 
     push();
     textAlign(CENTER, CENTER);
-    textSize(60);
+    textSize(50);
     fill(255,255,255);
     text("PRESS BUTTON IF STILL RESPONSIVE", width/2, height/2 - 70/1122*height);
     if(t > 0){
@@ -256,8 +257,8 @@ function draw() {
     pop();
   }
 
-  // if(startCountdown && !stopCountdown && (millis() - cdTime) >= 5000){
-  //   // console.log("hi");
-  // runCall();
-  // }
+  if(startCountdown && !stopCountdown && (millis() - cdTime) >= 5000){
+    // console.log("hi");
+    runCall();
+  }
 }
